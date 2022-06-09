@@ -1,23 +1,30 @@
 class Solution {
 public:
-    int maxProduct(vector<int>& nums) {
-        int ans = INT_MIN;
-        int prod = 1;
-        for(int i = 0; i < nums.size(); i++){
-            prod *= nums[i];
-            ans = max(ans, prod);
-            if(nums[i]==0){
-                prod = 1;
-            }
+    int maxProduct(vector<int>& arr) {
+// Variables to store maximum and minimum product till ith index.
+        int minVal = arr[0];
+        int maxVal = arr[0];
+        int n = arr.size();
+        int maxProduct = arr[0];
+
+        for (int i = 1; i < n; i++) {
+
+            // When multiplied by -ve number,
+            // maxVal becomes minVal
+            // and minVal becomes maxVal.
+            if (arr[i] < 0)
+                swap(maxVal, minVal);
+
+            // maxVal and minVal stores the
+            // product of subarray ending at arr[i].
+            maxVal = max(arr[i], maxVal * arr[i]);
+            minVal = min(arr[i], minVal * arr[i]);
+
+            // Max Product of array.
+            maxProduct = max(maxProduct, maxVal);
         }
-        prod = 1;
-        for(int i = nums.size()-1; i >= 0; i--){
-            prod *= nums[i];
-            ans = max(ans, prod);
-            if(nums[i]==0){
-                prod = 1;
-            }
-        }
-        return ans;
+
+        // Return maximum product found in array.
+        return maxProduct;
     }
 };
