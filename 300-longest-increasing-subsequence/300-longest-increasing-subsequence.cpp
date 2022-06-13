@@ -5,7 +5,8 @@ class Solution {
         int ans = 0;
         for(int i = idx+1; i < nums.size(); i++){
             if(nums[i]>nums[idx]){
-                ans = max(ans, solve(temp ,i, nums));
+                if(temp[i]!=-1) ans = max(ans, temp[i]);
+                else ans = max(ans, solve(temp ,i, nums));
             }
         }
         return temp[idx] = ans+1;
