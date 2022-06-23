@@ -1,7 +1,7 @@
 class Solution {
 public:
     int numSquares(int n) {
-        static vector<int> cntPerfectSquares({0});
+        vector<int> cntPerfectSquares({0});
         while (cntPerfectSquares.size() <= n){
             int m = cntPerfectSquares.size();
             int cntSquares = INT_MAX;
