@@ -10,10 +10,20 @@
 
 class Solution {
 public:
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        int ans = root->val;
-        if(ans > p->val && ans > q->val) return lowestCommonAncestor(root->left, p, q);
-        else if(ans < p->val && ans < q->val) return lowestCommonAncestor(root->right, p, q);
-        return root;
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {        
+        queue<TreeNode*> pendingNodes;
+        pendingNodes.push(root);
+        TreeNode* ans;
+        while(pendingNodes.size()){
+            TreeNode* front = pendingNodes.front();
+            pendingNodes.pop();
+            if(front->val > p->val && front->val > q->val) pendingNodes.push(front->left);
+            else if(front->val < p->val && front->val < q->val) pendingNodes.push(front->right);
+            else{
+                ans = front;
+                break;
+            }
+        }
+        return ans;
     }
 };
