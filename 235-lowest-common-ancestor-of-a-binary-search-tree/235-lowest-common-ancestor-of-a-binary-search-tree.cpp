@@ -11,19 +11,16 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {        
-        queue<TreeNode*> pendingNodes;
-        pendingNodes.push(root);
-        TreeNode* ans;
-        while(pendingNodes.size()){
-            TreeNode* front = pendingNodes.front();
-            pendingNodes.pop();
-            if(front->val > p->val && front->val > q->val) pendingNodes.push(front->left);
-            else if(front->val < p->val && front->val < q->val) pendingNodes.push(front->right);
-            else{
-                ans = front;
-                break;
+        TreeNode* temp = root;
+        while(temp!=NULL){
+            if(temp->val < p->val && temp->val < q->val){
+                temp = temp->right;
             }
+            else if(temp->val > p->val && temp->val > q->val){
+                temp = temp->left;
+            }
+            else break;
         }
-        return ans;
+        return temp;
     }
 };
