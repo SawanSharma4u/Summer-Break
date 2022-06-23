@@ -36,6 +36,8 @@ class Solution {
             ans->max = max(ans->max, right->max);
             ans->maxDiff = max(max(ans->maxDiff, right->maxDiff), max(abs(root->val - right->min), abs(root->val - right->max)));
         } 
+        delete left;
+        delete right;
         return ans; 
     }
 public:
