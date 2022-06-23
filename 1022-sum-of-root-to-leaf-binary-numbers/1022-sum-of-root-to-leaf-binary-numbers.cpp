@@ -11,25 +11,17 @@
  */
 class Solution {
     int sum = 0;
-    void helper(TreeNode* root, string s){
-        s = s + to_string(root->val);
-        if(root->left!=NULL) helper(root->left, s);
-        if(root->right!=NULL) helper(root->right, s);
+    void helper(TreeNode* root, int num){
+        num = num*2 + root->val;
+        if(root->left!=NULL) helper(root->left, num);
+        if(root->right!=NULL) helper(root->right, num);
         if(root->left==NULL && root->right==NULL){
-            int count = 1;
-            int n = 0;
-            int i = s.length()-1;
-            while(i>=0){
-                n += (s[i]-'0')*count;
-                count *= 2;
-                i--;
-            }
-            sum += n;
+            sum += num;
         }
     }
 public:
     int sumRootToLeaf(TreeNode* root) {
-        helper(root, "");
+        helper(root, 0);
         return sum;
     }
 };
