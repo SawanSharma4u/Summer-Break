@@ -1,10 +1,10 @@
 class Solution {
     vector<vector<bool>> arr;
-    vector<vector<int>> dp;
+    vector<int> dp;
     int helper(string s, int i, int j){
-        if(i>j) return 0;
-        if(dp[i][j]!=-1) return dp[i][j];
-        if(arr[i][j]) return dp[i][j] = 0;
+        if(i==j) return 0;
+        if(dp[i]!=-1) return dp[i];
+        if(arr[i][j]) return dp[i] = 0;
         int ans = INT_MAX;
         for(int k = i; k < j; k++){
             if(arr[i][k]){
@@ -12,13 +12,13 @@ class Solution {
                 ans = min(ans, temp);
             }
         }
-        return dp[i][j] = ans;
+        return dp[i] = ans;
     }
 public:
     int minCut(string s) {
         int n = s.length();
         arr.resize(n, vector<bool>(n));
-        dp.resize(n, vector<int>(n, -1));
+        dp.resize(n, -1);
         for(int i = 0; i < n; i++){
             for(int j = 0, k = i; j < n && k < n; j++, k++){
                 if(k-j==0){
