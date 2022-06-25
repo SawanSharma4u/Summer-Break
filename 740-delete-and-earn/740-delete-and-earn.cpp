@@ -9,11 +9,13 @@ public:
                 maxNumber = nums[i];
             }
         }
-        vector<int> maxPoint(maxNumber+1, 0);
-        maxPoint[1] = points[1];
+        int a = 0;
+        int b = points[1];
         for(int i = 2; i <= maxNumber; i++){
-            maxPoint[i] = max(maxPoint[i-1], maxPoint[i-2] + points[i]);
+            int temp = max(b, a + points[i]);
+            a = b;
+            b = temp;
         }
-        return maxPoint[maxNumber];
+        return b;
     }
 };
