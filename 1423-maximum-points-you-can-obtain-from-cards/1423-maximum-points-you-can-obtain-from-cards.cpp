@@ -8,10 +8,8 @@ public:
         int n = cardPoints.size();
         if(k==n) return ans;
         int MaxScore = ans;
-        int j = k-1;
-        for(int i = n-1; i >= n-k; i--){
+        for(int i = n-1, j = k-1; i >= n-k; i--, j--){
             ans = ans - cardPoints[j] + cardPoints[i];
-            j--;
             MaxScore = max(MaxScore, ans);
         }
         return MaxScore;
