@@ -9,13 +9,10 @@
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
-        unordered_map<ListNode*, int> myMap;
         ListNode* temp = head;
-        int pos = 0;
         while(temp!=NULL){
-            if(myMap.count(temp)!=0) return temp;
-            myMap[temp] = pos;
-            pos++;
+            if(temp->val == 1000000) return temp;
+            temp->val = 1000000;
             temp = temp->next;
         }
         return NULL;
