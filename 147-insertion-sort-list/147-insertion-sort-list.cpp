@@ -10,6 +10,7 @@
  */
 class Solution {
 public:
+    
     ListNode* insertionSortList(ListNode* head) {
         vector<int> arr;
         ListNode* temp = head;
