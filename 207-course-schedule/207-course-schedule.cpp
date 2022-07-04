@@ -24,7 +24,6 @@ public:
             adj[u].push_back(v);
             indegree[v]++;
         }
-        vector<bool> visited(n, false);
         //vector<bool> dfsvisited(n, false);
         queue<int> q;
         for(int i = 0; i < n; i++){
