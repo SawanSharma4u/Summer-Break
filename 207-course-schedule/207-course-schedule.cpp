@@ -17,19 +17,15 @@ class Solution {
 public:
     bool canFinish(int n, vector<vector<int>>& prerequisites) {
         unordered_map<int, list<int>> adj;
+        vector<int> indegree(n, 0);
         for(auto i : prerequisites){
             int u = i[0];
             int v = i[1];
             adj[u].push_back(v);
+            indegree[v]++;
         }
         vector<bool> visited(n, false);
         //vector<bool> dfsvisited(n, false);
-        vector<int> indegree(n, 0);
-        for(auto i : adj){
-            for(auto j : i.second){
-                indegree[j]++;
-            }
-        }
         queue<int> q;
         for(int i = 0; i < n; i++){
             if(indegree[i]==0){
