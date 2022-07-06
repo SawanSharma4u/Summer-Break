@@ -5,9 +5,9 @@ public:
         int n = nums.size()-1;
         int ans = 0;
         for(int i = 1; i <= n; i++){
-            ans += nums[i]-nums[0];
+            ans += nums[i];
         }
-        return ans;
+        return ans-(nums[0]*n);
     }
     
 };
