@@ -2,7 +2,7 @@ class TreeAncestor {
     vector<vector<int>> dp;
 public:
     TreeAncestor(int n, vector<int>& parent) {
-        dp.resize(20, vector<int>(n));
+        dp.resize(16, vector<int>(n));
         for(int i = 0; pow(2,i) <= n; i++){
             for(int j = 0; j < n; j++){
                 if(i==0){
