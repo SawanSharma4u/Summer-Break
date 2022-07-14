@@ -1,7 +1,6 @@
 class Solution {
     vector<vector<int>> dp;
     bool help(string &s, string &p, int i, int j){
-        cout<<i<<" "<<j<<endl;
         if(i==s.length()){
             while(j!=p.length()){
                 if(p[j]=='*')
