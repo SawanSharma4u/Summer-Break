@@ -28,7 +28,7 @@ class Solution {
         }
         else if(p[j]=='*'){
             if(j!=0 && (s[i]==p[j-1] || p[j-1]=='.')){
-                ans = help(s, p, i+1, j) || help(s, p, i, j+1) || help(s, p, i+1, j+1);
+                ans = help(s, p, i+1, j) || help(s, p, i, j+1);
             }
             else{
                 ans = help(s, p, i, j+1);
