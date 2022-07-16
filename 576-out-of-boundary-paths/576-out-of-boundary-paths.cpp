@@ -1,10 +1,16 @@
 class Solution {
     #define e 1000000007
     unordered_map<string, int> map;
+    bool flag = true;
+    int move;
 public:
     int findPaths(int m, int n, int k, int i, int j) {
+        if(flag){
+            move = k;
+            flag = false;
+        }
         if(k == 0 || i == m || i < 0 || j < 0 || j == n) return 0;
-        string key = to_string(i) + "-" + to_string(j) + "-" + to_string(k);
+        string key = to_string(i) + "-" + to_string(j) + "-" + to_string(move-k);
         if(map.count(key)!=0){
             return map[key];
         }
