@@ -10,15 +10,8 @@
  * };
  */
 class Solution {
-    int solve(TreeNode* root, int num){
-        if(root==NULL) return 0;
-        int ans = 0;
-        if(root->val >= num) ans = 1;
-        return ans + solve(root->left, max(num, root->val)) + solve(root->right, max(num, root->val));
-    }
 public:
-    int goodNodes(TreeNode* root) {
-        if(root==NULL) return 0;
-        return 1 + solve(root->left, root->val) + solve(root->right, root->val);
+    int goodNodes(TreeNode* r, int ma = -10000) {
+        return r ? goodNodes(r->left, max(ma, r->val)) + goodNodes(r->right, max(ma, r->val)) + (r->val >= ma) : 0;
     }
 };
