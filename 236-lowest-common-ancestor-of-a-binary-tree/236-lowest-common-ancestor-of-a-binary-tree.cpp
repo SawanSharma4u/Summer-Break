@@ -8,24 +8,13 @@
  * };
  */
 class Solution {
-    TreeNode* ans = NULL;
-    bool helper(TreeNode* root, TreeNode* p, TreeNode* q){
-        if(root==NULL) return false;
-        if(root == p || root == q){
-            ans = root;
-            return true;
-        }
-        
-        bool left = helper(root->left, p, q);
-        bool right = helper(root->right, p, q);
-        if(left && right){
-            ans = root;
-        }
-        return left || right;
-    }
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        helper(root, p, q);
-        return ans;
+        if(root==NULL) return NULL;
+        TreeNode* left = lowestCommonAncestor(root->left, p, q);
+        TreeNode* right = lowestCommonAncestor(root->right, p, q);
+        if(root==p || root==q || (left && right)) return root;
+        else if(left) return left;
+        return right;
     }
 };
