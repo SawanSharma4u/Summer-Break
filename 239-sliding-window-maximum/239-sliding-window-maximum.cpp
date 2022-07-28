@@ -11,6 +11,10 @@ public:
             while(pq.size() >= k){
                 top = pq.top();
                 if(i - top.second > k) pq.pop();
+                else if(i - top.second == k){
+                    pq.pop();
+                    break;
+                }
                 else break;
             }
             op.push_back(top.first);
@@ -20,6 +24,10 @@ public:
         while(pq.size() >= k){
             top = pq.top();
             if(nums.size() - top.second > k) pq.pop();
+            else if(nums.size() - top.second == k){
+                pq.pop();
+                break;
+            }
             else break;
         }
         op.push_back(top.first);
