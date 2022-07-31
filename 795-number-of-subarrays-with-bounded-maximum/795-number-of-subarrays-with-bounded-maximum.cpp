@@ -24,9 +24,7 @@ public:
         }
         int ans = 0;
         for(int i = 0; i < nums.size(); i++){
-            cout<<left[i]<<" ";
             if(nums[i] >= l && nums[i] <= r){
-                // cout<<(i-left[i]+1)<<" "<<(right[i]-i)<<endl;
                 ans += (i-left[i]+1)*(right[i]-i);
             }
         }
