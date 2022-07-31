@@ -13,7 +13,7 @@ public:
             if(mp.count(cnt)){
                 ans = max(ans, i-mp[cnt]);
             }
-            else mp[cnt] = i;
+            else mp.insert(make_pair(cnt,i));
         }
         return ans;
     }
